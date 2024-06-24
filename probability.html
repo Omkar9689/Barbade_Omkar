@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Probability Search</title>
+  <style>
+    /* Styles for the overall layout */
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* Header styles */
+    header {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
+    /* Main styles */
+    main {
+      display: flex;
+      flex-grow: 1;
+      flex-direction: row; /* Change to horizontal layout */
+      flex-wrap: wrap; /* Allow content to wrap */
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Section styles */
+    section {
+      margin: 20px;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      background-color: #f4f4f4; /* Light background color */
+      max-width: 600px; /* Limit width to improve readability */
+    }
+
+    h2 {
+      color: #333;
+    }
+
+    p {
+      color: #555;
+    }
+
+    /* Output container styles */
+    #output-container {
+      margin-top: 20px;
+    }
+
+    /* Button container styles */
+    #button-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+    #animation-button {
+      font-size: 20px;
+      padding: 15px 30px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    #animation-button:hover {
+      background-color: #0056b3;
+    }
+
+    /* Code editor container styles */
+    #code-editor-container {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    /* Language button styles */
+    .language-button {
+      font-size: 16px;
+      padding: 10px 20px;
+      margin: 0 5px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .language-button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.0/codemirror.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.0/mode/clike/clike.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.0/mode/javascript/javascript.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.0/mode/php/php.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.0/mode/python/python.min.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Probability Search</h1>
+  </header>
+
+  <main>
+    <section>
+      <h2>What is Probability Search?</h2>
+      <p>
+        Probability search, also known as Interpolation Search, is an efficient search algorithm used for searching in sorted arrays with uniformly distributed values.
+      </p>
+    </section>
+
+    <section>
+      <h2>How does it work?</h2>
+      <p>
+        Unlike binary search which always checks the middle element, probability search calculates the probable position of the target element using interpolation formula and adjusts the search position accordingly.
+      </p>
+    </section>
+
+    <section>
+      <h2>Time Complexity:</h2>
+      <p>Best Case: O(1)</p>
+      <p>Average Case: O(log log n)</p>
+      <p>Worst Case: O(n)</p>
+    </section>
+
+    <section>
+      <h2>Advantages of Probability Search:</h2>
+      <ul>
+        <li>Efficient for large datasets with uniformly distributed values.</li>
+        <li>Can perform better than binary search in certain scenarios.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Disadvantages of Probability Search:</h2>
+      <ul>
+        <li>Requires the array to be sorted and uniformly distributed.</li>
+        <li>Not suitable for small datasets or datasets with non-uniform distributions.</li>
+      </ul>
+    </section>
+  </main>
+
+ 
+  <div id="button-container">
+    <a id="animation-button" href="probability_animation.html">Start Animation</a>
+  </div>
+  
+</body>
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Selection Sort</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.0/codemirror.min.css">
+  <style>
+    /* Styles for the overall layout */
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* Header styles */
+    header {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
+    /* Main styles */
+    main {
+      display: flex;
+      flex-grow: 1;
+      flex-direction: row; /* Change to horizontal layout */
+      flex-wrap: wrap; /* Allow content to wrap */
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Section styles */
+    section {
+      margin: 20px;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      background-color: #f4f4f4; /* Light background color */
+      max-width: 600px; /* Limit width to improve readability */
+    }
+
+    h2 {
+      color: #333;
+    }
+
+    p {
+      color: #555;
+    }
+
+    /* Output container styles */
+    #output-container {
+      margin-top: 20px;
+    }
+
+    /* Button container styles */
+    #button-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    /* Animation button styles */
+    #animation-button {
+      font-size: 20px;
+      padding: 15px 30px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    #animation-button:hover {
+      background-color: #0056b3;
+    }
+
+    /* Code editor container styles */
+    #code-editor-container {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    /* Language button styles */
+    .language-button {
+      font-size: 16px;
+      padding: 10px 20px;
+      margin: 0 5px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .language-button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.0/codemirror.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.0/mode/clike/clike.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.0/mode/javascript/javascript.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.0/mode/php/php.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.0/mode/python/python.min.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Selection Sort</h1>
+  </header>
+
+  <main>
+    <section>
+      <h2>What is Selection Sort?</h2>
+      <p>
+        Selection Sort is a simple sorting algorithm that divides the input list into two parts: the sorted sublist and the unsorted sublist.
+        It repeatedly selects the smallest (or largest, depending on the order) element from the unsorted sublist and moves it to the end of the sorted sublist.
+      </p>
+    </section>
+
+    <section>
+      <h2>Example:</h2>
+      <p>
+        Consider the following array:
+        <code>[64, 25, 12, 22, 11]</code>
+      </p>
+    </section>
+
+    <section>
+      <div id="output-container">
+        <h2>Output:</h2>
+        <pre id="output"></pre>
+        <p>
+          Applying Selection Sort:
+          <code>[11, 12, 22, 25, 64]</code>
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <h2>Complexity Analysis of Selection Sort:</h2>
+      <p>Time Complexity: O(N<sup>2</sup>)</p>
+      <p>Auxiliary Space: O(1)</p>
+    </section>
+
+    <section>
+      <h2>Advantages of Selection Sort:</h2>
+      <ul>
+        <li>Simple implementation.</li>
+        <li>Memory efficient; requires only a constant amount of additional space.</li>
+        <li>Doesn't require recursive function calls like quicksort or mergesort.</li>
+        <li>Good for small datasets or when the auxiliary memory is limited.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Disadvantages of Selection Sort:</h2>
+      <ul>
+        <li>Not suitable for large datasets due to its quadratic time complexity.</li>
+        <li>Not stable; may change the relative order of elements with equal keys.</li>
+        <li>Not adaptive; the time complexity remains the same regardless of the input.</li>
+      </ul>
+    </section>
+
+    <!-- Code editor container -->
+    
+  </main>
+  <div id="button-container">
+    <a id="animation-button" href="selection_animation.html">Start Animation</a>
+  </div>
+  
+</body>
+</html>

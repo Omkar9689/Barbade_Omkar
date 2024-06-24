@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quick Sort Animation</title>
+    <style>
+        /* Add CSS styles for the animation */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            height: 400px;
+            margin-top: 20px;
+        }
+
+        .bar-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 5px;
+            position: relative;
+        }
+
+        .bar {
+            width: 20px;
+            margin: 0 5px; /* Adjust the margin to change the distance between bars */
+            background-color: #3498db;
+            transition: height 0.3s, background-color 0.3s; /* Adjust transition properties */
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+        }
+
+        .sorted {
+            background-color: #27ae60; /* Change the color of sorted bars */
+        }
+
+        .animation {
+            background-color: #e74c3c !important; /* Change the color for animation */
+        }
+
+        .index-label {
+            position: absolute;
+            bottom: -20px;
+        }
+
+        .value-label {
+            position: absolute;
+            top: -20px;
+            transition: transform 0.3s; /* Add transition for smooth animation */
+        }
+
+        .value-label.animation-swapped {
+            transform: translateY(100%); /* Move the swapped label */
+        }
+
+        .input-container {
+            margin-bottom: 10px;
+        }
+
+        label {
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        input[type="number"],
+        input[type="text"] {
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        input[type="number"]:focus,
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #3498db;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+        
+        #progress-container {
+            width: 90%;
+            margin: 20px auto;
+            background-color: #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        #progress-bar {
+            height: 20px;
+            background-color: #3498db;
+            transition: width 0.3s;
+        }
+    </style>
+</head>
+<body>
+    <div class="input-container">
+        <label for="arraySize">Array Size:</label>
+        <input type="number" id="arraySize" value="20">
+        <button onclick="generateArray()">Generate Array</button>
+    </div>
+
+    <div class="input-container">
+        <label for="numbersToSort">Numbers to Sort:</label>
+        <input type="text" id="numbersToSort" placeholder="Enter numbers separated by commas">
+    </div>
+
+    <div class="container" id="container"></div>
+    
+    <div id="progress-container">
+        <div id="progress-bar" style="width: 0;"></div>
+    </div>
+
+    <div class="input-container">
+        <button onclick="startAnimation()">Start Animation</button>
+        <button onclick="stopAnimation()">Stop Animation</button>
+        <button onclick="resetAnimation()">Reset Animation</button>
+    </div>
+
+    <script>
+        // JavaScript code to generate animation for quick sort algorithm
+
+        let arr = [];
+        let progressInterval;
+
+        // Function to generate array based on user input
+        function generateArray() {
+            let size = parseInt(document.getElementById('arraySize').value);
+            let numbersToSort = document.getElementById('numbersToSort').value;
+            arr = numbersToSort.split(',').map(Number);
+            if (arr.length !== size) {
+                alert('The number of elements entered does not match the array size.');
+                return;
+            }
+            createBars(arr);
+        }
+
+        // Function to create bars representing array elements
+        function createBars(arr) {
+            let container = document.getElementById('container');
+            container.innerHTML = '';
+            for (let i = 0; i < arr.length; i++) {
+                let barContainer = document.createElement('div');
+                barContainer.classList.add('bar-container');
+
+                let indexLabel = document.createElement('div');
+                indexLabel.classList.add('index-label');
+                indexLabel.textContent = i;
+                barContainer.appendChild(indexLabel);
+
+                let bar = document.createElement('div');
+                bar.classList.add('bar');
+                bar.style.height = arr[i] * 5 + 'px';
+                bar.style.width = '20px'; // Initial width
+
+                let valueLabel = document.createElement('div');
+                valueLabel.classList.add('value-label');
+                valueLabel.textContent = arr[i];
+                bar.appendChild(valueLabel);
+
+                barContainer.appendChild(bar);
+
+                container.appendChild(barContainer);
+            }
+        }
+
+        // Function to perform quick sort and animate
+        async function quickSort(start, end) {
+            if (start >= end) return;
+            let index = await partition(start, end);
+            await quickSort(start, index - 1);
+            await quickSort(index + 1, end);
+        }
+
+        // Function to partition the array for quick sort
+        async function partition(start, end) {
+            let pivotIndex = start;
+            let pivotValue = arr[end];
+            for (let i = start; i < end; i++) {
+                if (arr[i] < pivotValue) {
+                    await animateSwap(i, pivotIndex);
+                    let temp = arr[i];
+                    arr[i] = arr[pivotIndex];
+                    arr[pivotIndex] = temp;
+                    pivotIndex++;
+                }
+            }
+            await animateSwap(pivotIndex, end);
+            let temp = arr[pivotIndex];
+            arr[pivotIndex] = arr[end];
+            arr[end] = temp;
+            return pivotIndex;
+        }
+
+        // Function to animate the swapping of two bars and numbers
+        function animateSwap(index1, index2) {
+            return new Promise(resolve => {
+                setTimeout(() => {
+                    let bars = document.querySelectorAll('.bar');
+                    let valueLabels = document.querySelectorAll('.value-label');
+                    bars[index1].classList.add('animation');
+                    bars[index2].classList.add('animation');
+                    if (valueLabels[index1]) valueLabels[index1].classList.add('animation-swapped');
+                    if (valueLabels[index2]) valueLabels[index2].classList.add('animation-swapped');
+                    setTimeout(() => {
+                        let tempHeight = bars[index1].style.height;
+                        bars[index1].style.height = bars[index2].style.height;
+                        bars[index2].style.height = tempHeight;
+                        let tempText = valueLabels[index1].textContent;
+                        valueLabels[index1].textContent = valueLabels[index2].textContent;
+                        valueLabels[index2].textContent = tempText;
+                        bars[index1].classList.remove('animation');
+                        bars[index2].classList.remove('animation');
+                        if (valueLabels[index1]) valueLabels[index1].classList.remove('animation-swapped');
+                        if (valueLabels[index2]) valueLabels[index2].classList.remove('animation-swapped');
+                        resolve();
+                    }, 300); // Adjust the animation speed (milliseconds)
+                }, 500); // Adjust the delay between comparisons (milliseconds)
+            });
+        }
+
+        // Function to start the animation
+        async function startAnimation() {
+            if (arr.length === 0) {
+                alert('Please generate an array first.');
+                return;
+            }
+            await quickSort(0, arr.length - 1);
+            // Update index labels after sorting
+            let indexLabels = document.querySelectorAll('.index-label');
+            indexLabels.forEach((label, index) => {
+                label.textContent = index;
+            });
+            // Sort the numbers and update the value labels accordingly
+            let valueLabels = document.querySelectorAll('.value-label');
+            let sortedArr = [...arr].sort((a, b) => a - b);
+            valueLabels.forEach((label, index) => {
+                label.textContent = sortedArr[index];
+            });
+            // Add 'sorted' class to all bars after sorting is complete to change their color
+            let bars = document.querySelectorAll('.bar');
+            bars.forEach(bar => {
+                bar.classList.add('sorted');
+            });
+        }
+
+        // Function to update the progress bar
+        function updateProgressBar() {
+            const progress = document.getElementById('progress-bar');
+            const completed = document.querySelectorAll('.sorted').length;
+            const total = arr.length;
+            const percent = (completed / total) * 100;
+            progress.style.width = percent + '%';
+        }
+
+        // Function to stop the animation
+        function stopAnimation() {
+            clearTimeout(progressInterval);
+        }
+
+        // Function to reset the animation
+        function resetAnimation() {
+            clearTimeout(progressInterval);
+            document.getElementById('progress-bar').style.width = '0%';
+            generateArray();
+        }
+
+        // Initial array generation on page load
+        window.onload = generateArray;
+    </script>
+</body>
+</html>

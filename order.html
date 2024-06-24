@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Search</title>
+  <style>
+    /* Styles for the overall layout */
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* Header styles */
+    header {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
+    /* Main styles */
+    main {
+      display: flex;
+      flex-grow: 1;
+      flex-direction: row; /* Change to horizontal layout */
+      flex-wrap: wrap; /* Allow content to wrap */
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Section styles */
+    section {
+      margin: 20px;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      background-color: #f4f4f4; /* Light background color */
+      max-width: 600px; /* Limit width to improve readability */
+    }
+
+    h2 {
+      color: #333;
+    }
+
+    p {
+      color: #555;
+    }
+
+    /* Output container styles */
+    #output-container {
+      margin-top: 20px;
+    }
+
+    /* Button container styles */
+    #button-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+    #animation-button {
+      font-size: 20px;
+      padding: 15px 30px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    #animation-button:hover {
+      background-color: #0056b3;
+    }
+
+    /* Code editor container styles */
+    #code-editor-container {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    /* Language button styles */
+    .language-button {
+      font-size: 16px;
+      padding: 10px 20px;
+      margin: 0 5px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .language-button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.0/codemirror.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.0/mode/clike/clike.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.0/mode/javascript/javascript.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.0/mode/php/php.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.0/mode/python/python.min.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Order Search</h1>
+  </header>
+
+  <main>
+    <section>
+      <h2>What is Order Search?</h2>
+      <p>
+        Order search, also known as Sequential Search, is a simple search algorithm that sequentially checks each element of the array until a match is found or the entire array has been traversed.
+      </p>
+    </section>
+
+    <section>
+      <h2>How does it work?</h2>
+      <p>
+        Order search iterates through each element of the array, comparing it with the target value. If the element matches the target, the search stops and returns the index of the element.
+      </p>
+    </section>
+
+    <section>
+      <h2>Time Complexity:</h2>
+      <p>Best Case: O(1)</p>
+      <p>Average Case: O(n/2)</p>
+      <p>Worst Case: O(n)</p>
+    </section>
+
+    <section>
+      <h2>Advantages of Order Search:</h2>
+      <ul>
+        <li>Simple and easy to implement.</li>
+        <li>Works well for small datasets or unsorted arrays.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Disadvantages of Order Search:</h2>
+      <ul>
+        <li>Linear time complexity makes it inefficient for large datasets.</li>
+        <li>Not suitable for sorted arrays where binary search can be applied.</li>
+      </ul>
+    </section>
+  </main>
+
+  
+  <div id="button-container">
+    <a id="animation-button" href="order_animation.html">Start Animation</a>
+  </div>
+  
+</body>
+</html>

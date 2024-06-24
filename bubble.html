@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bubble Sort</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.0/codemirror.min.css">
+  <style>
+    /* Styles for the overall layout */
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* Header styles */
+    header {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
+    /* Main styles */
+    main {
+      display: flex;
+      flex-grow: 1;
+      flex-direction: row; /* Change to horizontal layout */
+      flex-wrap: wrap; /* Allow content to wrap */
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Section styles */
+    section {
+      margin: 20px;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      background-color: #f4f4f4; /* Light background color */
+      max-width: 600px; /* Limit width to improve readability */
+    }
+
+    h2 {
+      color: #333;
+    }
+
+    p {
+      color: #555;
+    }
+
+    /* Output container styles */
+    #output-container {
+      margin-top: 20px;
+    }
+
+    /* Button container styles */
+    #button-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    /* Animation button styles */
+    #animation-button {
+      font-size: 20px;
+      padding: 15px 30px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    #animation-button:hover {
+      background-color: #0056b3;
+    }
+
+    /* Code editor container styles */
+    #code-editor-container {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    /* Language button styles */
+    .language-button {
+      font-size: 16px;
+      padding: 10px 20px;
+      margin: 0 5px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .language-button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.0/codemirror.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.0/mode/clike/clike.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.0/mode/javascript/javascript.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.0/mode/php/php.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.0/mode/python/python.min.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Bubble Sort</h1>
+  </header>
+
+  <main>
+    <section>
+      <h2>What is Bubble Sort?</h2>
+      <p>
+        Bubble Sort is a simple sorting algorithm that repeatedly steps through the list,
+        compares adjacent elements, and swaps them if they are in the wrong order.
+        The pass through the list is repeated until the list is sorted.
+      </p>
+    </section>
+
+    <section>
+      <h2>Example:</h2>
+      <p>
+        Consider the following array:
+        <code>[64, 34, 25, 12, 22, 11, 90]</code>
+      </p>
+
+    </section>
+
+    <section>
+      <div id="output-container">
+        <h2>Output:</h2>
+        <pre id="output"></pre>
+        <p>
+          Applying Bubble Sort:
+          <code>[11, 12, 22, 25, 34, 64, 90]</code>
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <h2>Complexity Analysis of Bubble Sort:</h2>
+      <p>Time Complexity: O(N<sup>2</sup>)</p>
+      <p>Auxiliary Space: O(1)</p>
+    </section>
+
+    <section>
+      <h2>Advantages of Bubble Sort:</h2>
+      <ul>
+        <li>Bubble sort is easy to understand and implement.</li>
+        <li>It does not require any additional memory space.</li>
+        <li>It is a stable sorting algorithm, meaning that elements with the same key value maintain their relative order in the sorted output.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Disadvantages of Bubble Sort:</h2>
+      <ul>
+        <li>Bubble sort has a time complexity of O(N<sup>2</sup>) which makes it very slow for large data sets.</li>
+        <li>Bubble sort is a comparison-based sorting algorithm, which means that it requires a comparison operator to determine the relative order of elements in the input data set. It can limit the efficiency of the algorithm in certain cases.</li>
+      </ul>
+    </section>
+  </main>
+
+
+
+  <!-- Animation button -->
+  <div id="button-container">
+    <a id="animation-button" href="bubble_animation.html">Start Animation</a>
+  </div>
+
+  
+</body>
+</html>

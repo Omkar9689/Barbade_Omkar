@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sorting Algorithms</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+
+    nav {
+      background-color: #333;
+      overflow: hidden;
+    }
+
+    nav a {
+      float: left;
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
+
+    nav a:hover {
+      background-color: #ddd;
+      color: black;
+    }
+
+    nav button {
+      float: right;
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      background-color: #007bff;
+      border: none;
+      cursor: pointer;
+    }
+
+    nav button:hover {
+      background-color: #0056b3;
+    }
+
+    main {
+      margin: 25px auto; /* Center the main container */
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center; /* Center the blocks */
+    }
+
+    .algorithm {
+      border-radius:50% 0 50% 0;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 20px; /* Increased padding */
+      width: 200px; /* Equal width for all blocks */
+      height: 200px; /* Equal height for all blocks */
+      margin-bottom: 20px;
+      background-color: #f0f0f0; /* Default background color */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      text-decoration: none; /* Remove underline */
+      transition: background-color 0.3s; /* Smooth transition for color change */
+    }
+
+    .algorithm:hover {
+      background-color: #ddd; /* Change background color on hover */
+    }
+
+    #bubble-sort {
+      background-color: #ffc107; /* Yellow */
+    }
+
+    #insertion-sort {
+      background-color: #4caf50; /* Green */
+    }
+
+    #selection-sort {
+      background-color: #2196f3; /* Blue */
+    }
+
+    #merge-sort {
+      background-color: #ff5722; /* Orange */
+    }
+
+    #quick-sort {
+      background-color: #e91e63; /* Pink */
+    }
+
+    #radix-sort {
+      background-color: #795548; /* Brown */
+    }
+
+    h2 {
+      color: #333;
+      margin: 0;
+    }
+
+    p {
+      color: #555;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="bubble.html">Bubble Sort</a>
+  <a href="insertion.html">Insertion Sort</a>
+  <a href="selection.html">Selection Sort</a>
+  <a href="merge.html">Merge Sort</a>
+  <a href="quick.html">Quick Sort</a>
+  <a href="radix.html">Radix Sort</a>
+  <button onclick="viewComplexityTable()">View Complexity Table</button>
+</nav>
+
+<main>
+  <div>
+    <a class="algorithm" href="bubble.html" id="bubble-sort">
+      <h2>Bubble Sort</h2>
+      <!-- Add content for Bubble Sort -->
+    </a>
+
+    <a class="algorithm" href="insertion.html" id="insertion-sort">
+      <h2>Insertion Sort</h2>
+      <!-- Add content for Insertion Sort -->
+    </a>
+  </div>
+
+  <div>
+    <a class="algorithm" href="selection.html" id="selection-sort">
+      <h2>Selection Sort</h2>
+      <!-- Add content for Selection Sort -->
+    </a>
+
+    <a class="algorithm" href="merge.html" id="merge-sort">
+      <h2>Merge Sort</h2>
+      <!-- Add content for Merge Sort -->
+    </a>
+  </div>
+
+  <div>
+    <a class="algorithm" href="quick.html" id="quick-sort">
+      <h2>Quick Sort</h2>
+      <!-- Add content for Quick Sort -->
+    </a>
+
+    <a class="algorithm" href="radix.html" id="radix-sort">
+      <h2>Radix Sort</h2>
+      <!-- Add content for Radix Sort -->
+    </a>
+  </div>
+</main>
+
+<script>
+  function viewComplexityTable() {
+    // Redirect to the page with the complexity table
+    window.location.href = "soting_table.html";
+  }
+</script>
+
+</body>
+</html>

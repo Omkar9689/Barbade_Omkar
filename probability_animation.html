@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Probability Search Animation</title>
+  <style>
+    .container {
+      text-align: center;
+      margin-top: 50px;
+      font-family: Arial, sans-serif;
+    }
+
+    .array-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .array-item {
+      margin: 5px;
+      padding: 10px;
+      border: 1px solid #333;
+      background-color: #f0f0f0;
+      min-width: 40px;
+      text-align: center;
+      line-height: 1.5;
+    }
+
+    .highlight {
+      background-color: #3498db !important;
+      color: white !important;
+    }
+
+    input[type="number"] {
+      padding: 8px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+      transition: border-color 0.3s;
+    }
+
+    input[type="number"]:focus {
+      outline: none;
+      border-color: #3498db;
+    }
+
+    button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      background-color: #3498db;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #2980b9;
+    }
+
+    #searchResult {
+      font-weight: bold;
+      font-size: 24px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <label for="arraySize">Enter size of sorted array:</label>
+    <input type="number" id="arraySize" name="arraySize" min="1">
+    <button onclick="createArray()">Create Array</button><br><br>
+
+    <div class="array-container" id="arrayContainer">
+    </div>
+
+    <label for="searchValue">Enter value to search:</label>
+    <input type="number" id="searchValue" name="searchValue">
+    <button onclick="startSearch()">Start Search</button>
+    <p id="searchResult"></p>
+  </div>
+  
+  <script>
+    async function createArray() {
+      const arraySize = parseInt(document.getElementById("arraySize").value);
+      const arrayContainer = document.getElementById("arrayContainer");
+      arrayContainer.innerHTML = ''; // Clear previous array
+      for (let i = 0; i < arraySize; i++) {
+        const inputField = document.createElement("input");
+        inputField.setAttribute("type", "number");
+        inputField.setAttribute("class", "array-item");
+        inputField.setAttribute("placeholder", `Enter value ${i + 1} of ${arraySize}`);
+        arrayContainer.appendChild(inputField);
+      }
+    }
+
+    async function startSearch() {
+      const arrayElements = document.querySelectorAll('.array-item');
+      const searchValue = parseInt(document.getElementById("searchValue").value);
+      let low = 0;
+      let high = arrayElements.length - 1;
+      let foundIndex = -1;
+
+      // Animate the search process
+      while (low <= high && searchValue >= parseInt(arrayElements[low].value) && searchValue <= parseInt(arrayElements[high].value)) {
+        // Calculate the probable position with interpolation formula
+        let pos = low + Math.floor(((searchValue - parseInt(arrayElements[low].value)) * (high - low)) / (parseInt(arrayElements[high].value) - parseInt(arrayElements[low].value)));
+
+        // Highlight the current position
+        arrayElements[pos].style.backgroundColor = "orange";
+
+        // Delay before moving to the next step (for animation effect)
+        await new Promise(resolve => setTimeout(resolve, 1000));
+
+        // If the element is found
+        if (parseInt(arrayElements[pos].value) === searchValue) {
+          foundIndex = pos;
+          break;
+        }
+
+        // If the search value is greater, move to the right half
+        if (parseInt(arrayElements[pos].value) < searchValue) {
+          for (let i = low; i <= pos; i++) {
+            arrayElements[i].classList.remove("highlight");
+            arrayElements[i].style.backgroundColor = "#f0f0f0";
+          }
+          low = pos + 1;
+        } else { // If the search value is smaller, move to the left half
+          for (let i = pos; i <= high; i++) {
+            arrayElements[i].classList.remove("highlight");
+            arrayElements[i].style.backgroundColor = "#f0f0f0";
+          }
+          high = pos - 1;
+        }
+      }
+
+      // Display the search result
+      if (foundIndex !== -1) {
+        arrayElements[foundIndex].style.backgroundColor = "green"; // Highlight if found
+        document.getElementById("searchResult").textContent = `Element found at index ${foundIndex}.`;
+      } else {
+        document.getElementById("searchResult").textContent = "Element not found!";
+      }
+    }
+  </script>
+</body>
+</html>

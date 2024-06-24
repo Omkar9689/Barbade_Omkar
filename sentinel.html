@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sentinel Search</title>
+  <style>
+    /* Styles for the overall layout */
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* Header styles */
+    header {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
+    /* Main styles */
+    main {
+      display: flex;
+      flex-grow: 1;
+      flex-direction: row; /* Change to horizontal layout */
+      flex-wrap: wrap; /* Allow content to wrap */
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Section styles */
+    section {
+      margin: 20px;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      background-color: #f4f4f4; /* Light background color */
+      max-width: 600px; /* Limit width to improve readability */
+    }
+
+    h2 {
+      color: #333;
+    }
+
+    p {
+      color: #555;
+    }
+
+    /* Output container styles */
+    #output-container {
+      margin-top: 20px;
+    }
+
+    /* Button container styles */
+    #button-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+    #animation-button {
+      font-size: 20px;
+      padding: 15px 30px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    #animation-button:hover {
+      background-color: #0056b3;
+    }
+
+    /* Code editor container styles */
+    #code-editor-container {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    /* Language button styles */
+    .language-button {
+      font-size: 16px;
+      padding: 10px 20px;
+      margin: 0 5px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .language-button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.0/codemirror.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.0/mode/clike/clike.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.0/mode/javascript/javascript.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.0/mode/php/php.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.0/mode/python/python.min.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Sentinel Search</h1>
+  </header>
+
+  <main>
+    <section>
+      <h2>What is Sentinel Search?</h2>
+      <p>
+        Sentinel search, also known as sentinel linear search, is a variant of linear search. It improves the performance of linear search by reducing the number of comparisons.
+      </p>
+    </section>
+
+    <section>
+      <h2>Example:</h2>
+      <p>
+        Consider the following array:
+        <code>[10, 20, 30, 40, 50, 60]</code>
+      </p>
+
+      <p>
+        Searching for the value <code>30</code>:
+      </p>
+    </section>
+
+    <section>
+      <div id="output-container">
+        <h2>Output:</h2>
+        <pre id="output"></pre>
+        <code>50 found at index 4</code>
+      </div>
+    </section>
+
+    <section>
+      <h2>Advantages of Sentinel Search:</h2>
+      <ul>
+        <li>Reduces the number of comparisons in linear search.</li>
+        <li>Simple and easy to implement.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Disadvantages of Sentinel Search:</h2>
+      <ul>
+        <li>Requires an additional element (sentinel) in the array.</li>
+        <li>Not suitable for situations where memory usage is a concern.</li>
+      </ul>
+    </section>
+  </main>
+
+  <!-- Code editor container -->
+  
+  <div id="button-container">
+    <a id="animation-button" href="sentinel_animation.html">Start Animation</a>
+  </div>
+  
+</body>
+</html>

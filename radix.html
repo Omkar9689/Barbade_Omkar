@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Radix Sort</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.0/codemirror.min.css">
+  <style>
+    /* Styles for the overall layout */
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* Header styles */
+    header {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
+    /* Main styles */
+    main {
+      display: flex;
+      flex-grow: 1;
+      flex-direction: row; /* Change to horizontal layout */
+      flex-wrap: wrap; /* Allow content to wrap */
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Section styles */
+    section {
+      margin: 20px;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      background-color: #f4f4f4; /* Light background color */
+      max-width: 600px; /* Limit width to improve readability */
+    }
+
+    h2 {
+      color: #333;
+    }
+
+    p {
+      color: #555;
+    }
+
+    /* Output container styles */
+    #output-container {
+      margin-top: 20px;
+    }
+
+    /* Button container styles */
+    #button-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    /* Animation button styles */
+    #animation-button {
+      font-size: 20px;
+      padding: 15px 30px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    #animation-button:hover {
+      background-color: #0056b3;
+    }
+
+    /* Code editor container styles */
+    #code-editor-container {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    /* Language button styles */
+    .language-button {
+      font-size: 16px;
+      padding: 10px 20px;
+      margin: 0 5px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .language-button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.0/codemirror.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.0/mode/clike/clike.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.0/mode/javascript/javascript.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.0/mode/php/php.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.0/mode/python/python.min.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Radix Sort</h1>
+  </header>
+
+  <main>
+    <section>
+      <h2>What is Radix Sort?</h2>
+      <p>
+        Radix Sort is a non-comparison-based sorting algorithm that sorts integers by processing individual digits of numbers.
+        It sorts numbers by first grouping the elements by their individual digits, then sorting the elements according to their digit values.
+      </p>
+    </section>
+
+    <section>
+      <h2>Example:</h2>
+      <p>
+        Consider the following array:
+        <code>[170, 45, 75, 90, 802, 24, 2, 66]</code>
+      </p>
+    </section>
+
+    <section>
+      <div id="output-container">
+        <h2>Output:</h2>
+        <pre id="output"></pre>
+        <p>
+          Applying Radix Sort:
+          <code>[2, 24, 45, 66, 75, 90, 170, 802]</code>
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <h2>Complexity Analysis of Radix Sort:</h2>
+      <p>Time Complexity: O(N * k)</p>
+      <p>Auxiliary Space: O(N + k)</p>
+      <p>Where N is the number of elements in the array and k is the number of digits in the maximum element.</p>
+    </section>
+
+    <section>
+      <h2>Advantages of Radix Sort:</h2>
+      <ul>
+        <li>Linear time complexity for sorting integers.</li>
+        <li>Efficient for sorting numbers with a fixed number of digits.</li>
+        <li>Doesn't require comparison operations.</li>
+        <li>Stable; maintains the relative order of elements with equal keys.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Disadvantages of Radix Sort:</h2>
+      <ul>
+        <li>Requires additional space proportional to the size of the input array.</li>
+        <li>Only suitable for sorting integer keys.</li>
+        <li>Not as efficient for sorting floating-point numbers or variable-length keys.</li>
+      </ul>
+    </section>
+
+    
+  </main>
+  <div id="button-container">
+    <a id="animation-button" href="radix_animation.html">Start Animation</a>
+  </div>
+  
+</body>
+</html>
